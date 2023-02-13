@@ -1,0 +1,27 @@
+{
+	"name": "SourceDataLake",
+	"properties": {
+		"description": "The source data lake containing the Dataverse data that needs to be copied.",
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"SourceContainerName": {
+				"type": "string",
+				"defaultValue": "\"Dataverse Container Name\""
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": {
+					"value": "@dataset().SourceContainerName",
+					"type": "Expression"
+				}
+			}
+		}
+	}
+}

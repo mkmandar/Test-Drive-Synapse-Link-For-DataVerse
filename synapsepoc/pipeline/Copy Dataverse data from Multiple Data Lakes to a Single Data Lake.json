@@ -1,0 +1,61 @@
+{
+	"name": "Copy Dataverse data from Multiple Data Lakes to a Single Data Lake",
+	"properties": {
+		"description": "After using Azure Synapse Link for Dataverse, use this template to cycle through multiple Dataverse containers and copy all the data to a single Azure Data Lake.",
+		"activities": [
+			{
+				"name": "Copy Data Lake to Data Lake",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataLake",
+						"type": "DatasetReference",
+						"parameters": {
+							"SourceContainerName": "dataverse-salestrial-unqd138d6cea7c14d299704b98f04650"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataLake",
+						"type": "DatasetReference",
+						"parameters": {
+							"DestinationContainerName": "dataverse-salestrial-unqd138d6cea7c14d299704b98f04650"
+						}
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}

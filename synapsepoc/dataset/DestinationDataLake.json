@@ -1,0 +1,27 @@
+{
+	"name": "DestinationDataLake",
+	"properties": {
+		"description": "The destination data lake where the Dataverse data needs to land.",
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage2",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"DestinationContainerName": {
+				"type": "string",
+				"defaultValue": "\"Destination Container Name\""
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": {
+					"value": "@dataset().DestinationContainerName",
+					"type": "Expression"
+				}
+			}
+		}
+	}
+}

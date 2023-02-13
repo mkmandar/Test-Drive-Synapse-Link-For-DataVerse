@@ -1,5 +1,5 @@
 {
-	"name": "Dataflow1",
+	"name": "UkSouthCSV_UKWestDelta",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {

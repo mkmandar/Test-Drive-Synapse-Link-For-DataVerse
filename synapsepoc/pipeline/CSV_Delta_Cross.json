@@ -19,6 +19,13 @@
 						"referenceName": "UkSouthCSV_UKWestDelta",
 						"type": "DataFlowReference"
 					},
+					"staging": {
+						"linkedService": {
+							"referenceName": "AzureDataLakeStorage2",
+							"type": "LinkedServiceReference"
+						},
+						"folderPath": "stage"
+					},
 					"compute": {
 						"coreCount": 8,
 						"computeType": "General"
